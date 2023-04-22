@@ -1,0 +1,89 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <title>Quotes</title>
+        <script>
+            const QUOTEBANK = [ 
+                {
+                    quote :"Be yourself; everyone else is already taken",
+                    author: "― Oscar Wilde"
+                },
+                {
+                    quote : "I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.",
+                    author: "― Marilyn Monroe"
+                },
+                {
+                    quote:"“Be the change that you wish to see in the world.”",
+                    author:"― Mahatma Gandhi"
+                },
+                {
+                    quote:"“If you tell the truth, you don't have to remember anything.”",
+                    author:"― Mark Twain"
+                }
+
+            ];
+            window.onload =init;
+            function init(){
+                generateQuote();
+                }
+            function generateQuote(){
+                console.log("code generated")
+                let randomQuoteIndex = Math.floor(Math.random()* QUOTEBANK.length);
+                let randomQuote = QUOTEBANK[randomQuoteIndex]
+                
+                let quoteInApi = randomQuote.quote.replace(/ /g, "%20");
+                let authorInApi = randomQuote.author.replace(/ /g, "%20")
+                let tweetLink = "https://twitter.com/intent/tweet?text=" ;
+                tweetLink += quoteInApi;
+                tweetLink += authorInApi;
+
+                document.getElementById("tweet-quote").href= tweetLink;
+                document.getElementById("text").innerText=(randomQuote.quote);
+                document.getElementById("author").innerText=(randomQuote.author);
+
+            
+            }
+
+        </script>
+       
+    </head>
+    <body>
+        
+            <div class ="container">
+              <div class="row py-5">
+                <wrapper id="quote-box">
+                    <div class="col-md-6 offset-md-3"> 
+                    <div class="card">  
+                          
+                    
+                        <div class="card-header text-center">
+                        Randome Quote generator
+                        </div>
+                        <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <h5 class="card-title">
+                            <div id="text"> </div>
+                            </h5>
+                            
+                                <div id="author" ></div>
+                                <button id="new-quote" onClick="generateQuote();"class="btn btn-block btn-success ">new quote</button>
+                                <a href="#" target="_blank" id="tweet-quote"class="btn btn-block btn-primary ">tweet-quote</a>
+                        </blockquote>
+                        </div>
+                    </div>
+                  </div>
+               </wrapper>
+              </div>
+            </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    </body>
+
+
+</html>
